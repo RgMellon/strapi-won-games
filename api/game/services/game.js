@@ -3,6 +3,10 @@
 const axios = require("axios");
 const slugify = require("slugify");
 
+function timeout(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function getGameInfo(slug) {
   const jsdom = require("jsdom");
   const { JSDOM } = jsdom;
