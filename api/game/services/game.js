@@ -2,6 +2,7 @@
 
 const axios = require("axios");
 const slugify = require("slugify");
+const queryString = require("querystring");
 
 function timeout(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -157,7 +158,9 @@ async function createGames(products) {
 module.exports = {
   populate: async (params) => {
     try {
-      const gogApiUrl = `https://www.gog.com/games/ajax/filtered?mediaType=game&page=1&sort=popularity`;
+      const gogApiUrl = `https://www.gog.com/games/ajax/filtered?mediaType=game&${queryString.stringify(
+        params
+      )}`;
 
       const {
         data: { products },
